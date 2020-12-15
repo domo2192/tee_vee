@@ -36,16 +36,16 @@ class Network
         end
       end
     end
-    actor_shows.uniq 
+    actor_shows.uniq
   end
-
+    ### I THINK I STRAYED A LITTLE BIT ON THESE TWO LOL 
   def shows_by_actor
     character_names = []
     @shows.each do |show|
       show.characters.each do |character|
         character_names << character.actor
+        end
       end
-    end
       character_names.uniq.reduce({}) do |collector, name|
       collector[name] = character_shows(character_names)
       collector
@@ -57,10 +57,10 @@ class Network
     @shows.each do |show|
       show.characters.each do |character|
         actor_names << character.actor
-      end
-    end
-    actor_names.find_all do |name|
-      if (actor_names.count(name) > 1) == true
+          end
+        end
+        actor_names.find_all do |name|
+          if (actor_names.count(name) > 1) == true
         return [name]
       end
     end
