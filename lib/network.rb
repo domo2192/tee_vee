@@ -27,18 +27,18 @@ class Network
     end
   end
 
-  def character_shows(character_names)
+  def character_shows(name)
     actor_shows = []
     @shows.each do |show|
       if show.characters.each do |character|
-        character_names.include?(character.actor)
+        name.include?(character.actor)
         actor_shows << show
         end
       end
     end
-    actor_shows.uniq
+    actor_shows
   end
-    ### I THINK I STRAYED A LITTLE BIT ON THESE TWO LOL 
+    ### I THINK I STRAYED A LITTLE BIT ON THESE TWO LOL
   def shows_by_actor
     character_names = []
     @shows.each do |show|
@@ -47,7 +47,7 @@ class Network
         end
       end
       character_names.uniq.reduce({}) do |collector, name|
-      collector[name] = character_shows(character_names)
+      collector[name] = character_shows(name)
       collector
     end
   end
